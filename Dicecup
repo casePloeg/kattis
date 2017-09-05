@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+
+//Case Ploeg 09 - 02 - 2017
+using namespace std;
+
+int main(){
+    int faces1, faces2;
+    int maxCombos;
+    int x;
+
+    x = 0;
+
+    cin >> faces1 >> faces2;
+
+    maxCombos = faces1 * faces2;
+
+    int combos[maxCombos];
+    int sum[(faces1+faces2) - 1];
+    int possibleSums[(faces1+faces2) - 1];
+    bool sorted = false;
+
+    for(int dice1 = 1; dice1<=faces1; dice1++){
+      for(int dice2 = 1; dice2<=faces2; dice2++){
+            combos[x] = dice1 + dice2;
+            x++;
+        }
+    }
+
+    for(int i=0; i<((faces1+faces2) - 1); i++){
+        sum[i] = 0;
+        possibleSums[i] = i+2;
+    }
+
+    for(int i=0; i<maxCombos; i++){
+
+        for(int j=0; j<((faces1+faces2) - 1); j++){
+            if(combos[i] == possibleSums[j]){
+                sum[j]+= 1;
+            }
+        }
+    }
+
+    //bubblesort!
+    //sort occurance of combos along with possibleSums arrays
+    while(!sorted){
+        sorted = true; //sorted is true until there is a pair of numbers that are not in the right order
+        for(int i=0; i<((faces1+faces2) - 1); i++){
+            if(sum[i] < sum[i+1] && sum[i+1] < (faces1+faces2) ){
+                sorted = false; //when 2 numbers have to be sorted, sorted is false
+                int placeholder = sum[i];
+                int placeholder2 = possibleSums[i];
+                sum[i] = sum[i+1];
+                possibleSums[i] = possibleSums[i+1];
+                sum[i+1] = placeholder;
+                possibleSums[i+1] = placeholder2;
+            }
+        }
+    }
+
+    //runs through all possible sums
+    for(int i=0; i<((faces1+faces2) - 1); i++){
+        //only prints the highest sum
+        //the first element of the array is the highest possible occurance no matter what
+        if(sum[i] == sum[0]){
+            cout << possibleSums[i] << "\n";
+        }
+    }
+
+}
+
