@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+
+//Case Ploeg 09 - 07 - 2017
+//Tarifa
+using namespace std;
+
+int main(){
+
+    int cap;
+    int months;
+    int used[months];
+
+    cin >> cap >> months;
+
+    int leftOver = cap; //make sure cap is defined before you set leftOver to cap
+
+    for(int i=0; i<months; i++){
+        cin >> used[i];
+        leftOver -= used[i];
+        leftOver += cap; //add the cap to the total at the end of each month
+    }
+
+    cout << leftOver << "\n";
+}
+
