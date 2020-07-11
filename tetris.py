@@ -1,61 +1,74 @@
-import sys
+c, p = map(int, input().split())
+columns = list(map(int, input().split()))
+if p == 1:
+    total = 0
+    for i in range(c-3):
+        if columns[i] == columns[i+1] == columns[i+2] == columns[i+3]:
+            total += 1
+    total += c
+    print(total)
+elif p == 2:
+    total = 0
+    for i in range(c-1):
+        if columns[i] == columns[i+1]:
+            total += 1
+    print(total)
+elif p == 3:
+    total = 0
+    for i in range(c-1):
+        if columns[i] == columns[i+1]+1:
+            total += 1
+    for i in range(c-2):
+        if columns[i] == columns[i+1] == columns[i+2]-1:
+            total += 1
+    print(total)
+elif p == 4:
+    total = 0
+    for i in range(c-1):
+        if columns[i] == columns[i+1]-1:
+            total += 1
+    for i in range(c-2):
+        if columns[i]-1 == columns[i+1] == columns[i+2]:
+            total += 1
+    print(total)
+elif p == 5:
+    total = 0
+    for i in range(c-2):
+        if columns[i] == columns[i+1] == columns[i+2]:
+            total += 1
+        if columns[i]-1 == columns[i+1] == columns[i+2]-1:
+            total += 1
+    for i in range(c-1):
+        if columns[i] == columns[i+1]-1:
+            total += 1
+        if columns[i] == columns[i+1]+1:
+            total += 1
+    print(total)
+elif p == 6:
+    total = 0
+    for i in range(c-1):
+        if columns[i] == columns[i+1]:
+            total += 1
+        if columns[i]-2 == columns[i+1]:
+            total += 1
+    for i in range(c-2):
+        if columns[i] == columns[i+1] == columns[i+2]:
+            total += 1
+        if columns[i]+1 == columns[i+1] == columns[i+2]: 
+            total += 1
+    print(total)
 
+elif p == 7:
+    total = 0
+    for i in range(c-1):
+        if columns[i] == columns[i+1]:
+            total += 1
+        if columns[i]+2 == columns[i+1]:
+            total += 1
+    for i in range(c-2):
+        if columns[i] == columns[i+1] == columns[i+2]:
+            total += 1
+        if columns[i] == columns[i+1] == columns[i+2]+1: 
+            total += 1
+    print(total)
 
-# get the number of columns and number of pieces to be dropped
-
-# get the information about each column
-
-# create a counter for the number of valid moves
-
-# iterate through the columns
-
-    # if the given piece is piece 1
-        # increment the valid move counter by 2 as 0 and 180 turns are always
-        # valid
-        # if the length of the piece is less than or equal to the remaining
-        # number of columns
-            # if the current column as well as the next three columns to the
-            # right are the same value
-                # increment the valid move counter by 1
-                
-    # if the given piece is piece 2
-        # if the length of the piece is less than or equal to the remaining
-        # number of columns
-            # if the current column as well as the next column to the right are
-            # the same value
-                # increment the valid move counter by 1
-                
-    # if the given piece is piece 3
-        # if the length of the piece horizontally is less than or equal to the
-        # remaining number of columns
-        
-        # if the length of the piece vertically is less than or equal to the
-        # remaining number of columns
-        
-    # if the given piece is piece 4
-        # if the length of the piece horizontally is less than or equal to the
-        # remaining number of columns
-    
-        # if the length of the piece vertically is less than or equal to the
-        # remaining number of columns  
-        
-    # if the given piece is piece 5
-        # if the length of the piece horizontally is less than or equal to the
-        # remaining number of columns
-
-        # if the length of the piece vertically is less than or equal to the
-        # remaining number of columns 
-
-    # if the given piece is piece 6
-        # if the length of the piece horizontally is less than or equal to the
-        # remaining number of columns
-
-        # if the length of the piece vertically is less than or equal to the
-        # remaining number of columns
-
-    # if the given piece is piece 7
-        # if the length of the piece horizontally is less than or equal to the
-        # remaining number of columns
-    
-        # if the length of the piece vertically is less than or equal to the
-        # remaining number of columns
