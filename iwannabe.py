@@ -1,0 +1,10 @@
+n, k = map(int, input().split())
+team = set()
+pokes = [tuple(map(int, input().split())) for _ in range(n)]
+pokes.sort(key=lambda x: x[0], reverse=True)
+team |= set(pokes[:k])
+pokes.sort(key=lambda x: x[1], reverse=True)
+team |= set(pokes[:k])
+pokes.sort(key=lambda x: x[2], reverse=True)
+team |= set(pokes[:k])
+print(len(team))
